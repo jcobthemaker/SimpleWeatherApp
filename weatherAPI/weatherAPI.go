@@ -1,7 +1,7 @@
 package main
 
 import (
-	 "weatherAPI/urlBuilder"
+	"weatherAPI/urlBuilder"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -9,9 +9,18 @@ import (
 )
 
 func main() {
+
+	var city string
+
+	fmt.Println("\n Type city")
+	fmt.Scanln(&city)
 	
+	if city == "" {
+		panic("Empty city input")
+	}
+
 	params := map[string]string{
-		"q":  "Lodz",
+		"q":  city,
 		"api": "no",
 	}
 
@@ -47,7 +56,13 @@ func main() {
 		current.Condition.Text,
 	)
 
-	defer res.Body.Close()
+	defer func() {
+        if r := recover(); r != nil {
+            fmt.Println("Recovered. Error:\n", r)
+        } else {
+			res.Body.Close()
+		}
+    }()
 }
 
 
