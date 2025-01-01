@@ -5,15 +5,14 @@ import (
 	"weatherAPI/config"
 )
 
+func BuildAPIUrl(params map[string]string) (string, error) {
 
-func BuildAPIUrl(params map[string]string) (string,error) {
-
-	config.LoadConfig();
+	config.LoadConfig()
 	params["key"] = config.AppConfig.API.Key
 
 	apiBaseUrl := "http://api.weatherapi.com/v1/current.json"
 
-	u,err := url.Parse(apiBaseUrl)
+	u, err := url.Parse(apiBaseUrl)
 
 	if err != nil {
 		return "", err
@@ -21,7 +20,7 @@ func BuildAPIUrl(params map[string]string) (string,error) {
 
 	query := u.Query()
 
-	for key, value := range params{
+	for key, value := range params {
 		query.Set(key, value)
 	}
 

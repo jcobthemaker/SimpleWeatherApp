@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Go Website</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <h1>Welcome Weather APP</h1>
+    <label for="citySelect">Choose city</label>
+
+    <select name="city" id="citySelect">
+        <option value="" selected>Select option</option> 
+        <option value="Lodz">Lodz</option>
+        <option value="London">London</option>
+        <option value="Tokio">Tokio</option>
+        <option value="Warsaw">Warsaw</option>
+    </select>
+
+    <button class="sendAjax">Get Data</button>
+
+    <div class="responceDiv" style="display:none">
+        <p id="cityResponce"></p>
+        <p id="countryResponce"></p>
+        <p id="tempResponce"></p>
+        <br>
+    </div>
+    <p id="message"></p>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+
+</html>
